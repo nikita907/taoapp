@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{%block title%}Последние мнения{%endblock%}
+{%block content%}
+{%if latest_Adds%}
+{%for a in latest_Adds%}
+<a href="{%url 'prof' a.id %}">{{a.user_name}}</a>>
+{%endfor%}
+{%else%}
+Мнений пока нет,стань первым
+{%endif%}
+{%endblock%}
