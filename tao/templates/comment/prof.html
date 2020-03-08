@@ -12,6 +12,15 @@
 <p>
     <strong>{{c.comment_author}}</strong>
     <p>{{c.comment_text}}</p>
+<p>likes:{{c.comment_likes}}</p>
+<form action="{%url 'like_change' user.id c.id %}" method="get">
+    {% csrf_token %}
+    <input type="submit" value="&#128077;{{c.comment_likes}}" name="likes"></input>
+</form>
+<form action="{%url 'dislike_change' User.id c.id %}" method="get">
+ <input type="submit" value="&#128078 {{c.comment_dislikes}}" name="likes"></input>
+</form>
+<p>disikes:{{c.comment_dislikes}}</p>
 </p>
 {%endfor%}
 {%else%}

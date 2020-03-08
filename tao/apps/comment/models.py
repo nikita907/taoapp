@@ -12,7 +12,7 @@ class Users(models.Model):
         verbose_name_plural="Пользователи"
 
 class Comment(models.Model):
-    members = models.ForeignKey(Users,on_delete=models.CASCADE,default='1')
+    comment_id = models.ForeignKey(Users,on_delete=models.CASCADE,default='1')
     comment_author = models.CharField('автор коммента',max_length=20)
     comment_text=models.TextField('текст коммента',max_length=400)
     comment_likes=models.IntegerField("лайки")
