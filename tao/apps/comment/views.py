@@ -26,7 +26,7 @@ def leave_opinion(request, users_id):
     return HttpResponseRedirect(reverse('prof', args=(a.id,)))
 
 
-def like_change(request, users_id,comment_id):
+def like_change(request,users_id,comment_id):
     a = Users.objects.get(id=users_id)
     b = Comment.objects.get(id=comment_id)
     b.comment_likes = int(b.comment_likes) + 1
