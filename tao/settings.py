@@ -132,6 +132,7 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
     '/tao/tao/static/',
 ]
+STATIC_ROOT='/home/nikita907/tao/static'
 LOGIN_REDIRECT_URL = '/main'
 AVATAR_MAX_SIZE=10000000
 
