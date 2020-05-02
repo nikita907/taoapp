@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}TAO{%endblock%}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    {%load static%}
+</head>
+<body>
+{%block content%}
+{% csrf_token %}
+<ul>
+    <li><a>Моя страница</a></li>
+    <li><a>На главную</a></li>
+    <li><a>О проекте</a></li>
+</ul>
+<p>Hi {{username}}</p>
+<a href="{%url 'profile' spec.id %}">Моя страница</a>
+<p>You can <a href="{%url 'logout'%}">log out</a></p>
+<p>hi there,alexa_main!!{{u_nick}}</p>
+{%if Users%}
+{%for u in Users%}
+<a href="{%url 'prof' u.id%}">{{u.users_nick}}</a><br>
+{%endfor%}
+{%endif%}
+{%endblock%}
+</body>
+</html>

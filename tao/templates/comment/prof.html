@@ -1,20 +1,32 @@
-{% extends 'base.html'%}
-{%block title%}{{User.user_nick}}{%endblock%}
+{% extends 'main.html'%}
+{%block title%}{{User.users_nick}}{%endblock%}
 {%block content%}
-<h2>Hi there,my nickname is {{User.user_nick}}</h2>
-<h3>Some information about me:<br>{{User.user_information}}</h3>
-<h3>I am {{User.user_age}} years old</h3>
-<h3>I am from {{User.user_town}} that situated in {{User.user_country}}</h3>
-<hr>
-
+<ul class="navbar">
+    <form id="navbarform" action="{%url 'main'%}">
+        <input id="search" type="search" placeholder="Поиск" name="search">
+        <input id="searchbutton" type="submit" value="Найти">
+    </form>
+    <div class="help">
+        <li class="navigation"><a href="{%url 'main'%}">На главную</a></li>
+        <li class="navigation"><a>О проекте</a></li>
+        <li class="navigation"><a href="{%url 'logout'%}">Выйти</a></li>
+    </div>
+</ul>
+{%load static%}
+<h2>Hi there,my nickname is {{User.users_nick}}</h2>
+<h2 id="nick">{{User.users_nick}}</h2>
+<img id='image' src="{{ im.photo.url }}"/>
+<img id="imagebg" src="{%static 'images/1.png'%}">
+<img id="imagebg2" src="{%static 'images/pr.png'%}">
+<img id="imagebg3" src="{%static 'images/r5.png'%}">
 {%if commen %}
 {%for c in commen%}
 <p>
-    <strong>{{c.comment_author}}</strong>
+    <p id="comment">{{c.comment_author}}</p>
     <p>{{c.comment_text}}</p>
 <p>likes:{{c.comment_likes}}</p>
 <form action="{%url 'like_change' User.id c.id %}" method="get">
-    <input type="submit" value="&#128077;{{c.comment_likes}}" name="likes"></input>
+    <input id="test" type="submit" value="&#128077;{{c.comment_likes}}" name="likes"></input>
 </form>
 <form action="{%url 'dislike_change' User.id c.id %}" method="get">
  <input type="submit" value="&#128078 {{c.comment_dislikes}}" name="likes"></input>
@@ -23,13 +35,12 @@
 </p>
 {%endfor%}
 {%else%}
-Мнений пока нет,стань первым
+Мнений пока нет!,стань первым
 {%endif%}
-
 <hr>
 <form action="{%url 'leave_opinion' User.id%}" method="post">
     {% csrf_token %}
-<input type="text" value="anonim" name="name"><br>
+<input type="checkbox" name="name">Анонимный вопрос<br>
 <textarea name='text'placeholder="Оставьте своё мнение об этом человеке" cols="50" rows="10">
 </textarea><br>
     <button type="submit">Оставить комментарий</button>

@@ -1,0 +1,71 @@
+{% extends 'main.html'%}
+{%block title%}{{User.users_nick}}{%endblock%}
+{%block content%}
+<ul class="navbar">
+    <form id="navbarform" action="{%url 'main'%}">
+        <input id="search" type="search" placeholder="Поиск" name="search">
+        <input id="searchbutton" type="submit" value="Найти">
+    </form>
+    <div class="help">
+        <li class="navigation"><a href="{%url 'main'%}">На главную</a></li>
+        <li class="navigation"><a>О проекте</a></li>
+        <li class="navigation"><a href="{%url 'logout'%}">Выйти</a></li>
+    </div>
+</ul>
+{%load static%}
+<div id="qw">
+    <br><br><br>
+<img id='image' src="{{ im.photo.url }}"/>
+    <img id="imagebg2" src="{%static 'images/dym.png'%}">
+    <img id="imagebg4" src="{%static 'images/dym.png'%}">
+    <img id="imagebg3" src="{%static 'images/light.jpg'%}">
+<form method="post" action="" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{i}}
+    {%if not im%}
+    {{form.as_p}}
+    <input type="submit">
+    {%endif%}
+</form>
+    {%if infa%}
+    <img id='i' src="{%static 'images/birk.png'%}">
+    <p class="infa" id="Age">Возраст:{{infa.userAge}}</p><br><br><br>
+    <p class="infa" id="Town">Город:{{infa.userTown}}</p><br><br><br>
+    <p class="infa" id="Country">Страна:{{infa.userCountry}}</p><br><br><br>
+    <p class="infa" id="Sex">Пол:{{infa.userSex}}</p><br><br>
+    {%endif%}
+    {%if uform%}
+    <form action="{%url 'doedit' User.id%}" method="post">
+        {{uform.as_p}}
+        {%csrf_token%}
+        <input type="submit"  value="Подвердить">
+    </form>
+    {%else%}
+    <a href="{%url 'edit' User.id%}" id="edit">Редактировать</a>
+    {%endif%}
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{%if im%}
+<form method="post" action="{%url 'change' User.id%}" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" placeholder="Изменить" text="Изменить" value="Изменить">
+</form>
+{%endif%}
+{%if Commen %}
+{%for c in Commen%}
+<p>
+    <strong>{{c.comment_author}}</strong>
+<p>{{c.comment_text}}</p>
+<p>likes:{{c.comment_likes}}</p>
+<form  method="get">
+    <input id="test" type="submit" value="&#128077;{{c.comment_likes}}" name="likes"></input>
+</form>
+<form  method="get">
+    <input type="submit" value="&#128078 {{c.comment_dislikes}}" name="likes"></input>
+</form>
+<p>disikes:{{c.comment_dislikes}}</p>
+</p>
+{%endfor%}
+{%endif%}
+{%endblock%}

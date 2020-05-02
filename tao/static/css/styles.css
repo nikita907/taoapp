@@ -1,0 +1,110 @@
+
+.navbar{
+    background:black;
+}
+.nav-link , .navbar-brand{
+    color: #f4f4f4;
+    cursor: pointer;
+}
+.nav-link{
+    margin-right: 1em !important;
+}
+.box{
+    font-family: "Calibri Light";
+    font-style: oblique;
+    margin-top:-560px;
+    color: goldenrod;
+}
+#main{
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image: url(s.jpg);
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    opacity: .9;
+    text-align: center;
+}
+.nav-link:hover{
+    background: #f4f4f4;
+    color: #f97300;
+}
+#user_avatar{
+    border-radius: 15px;
+}
+.navbar-collapse{
+    justify-content: flex-end;
+}
+.navbar-toggler{
+    background:#fff !important;
+}
+.navbar-collapse{
+    justify-content: flex-end;
+}
+#register2{
+    left:25%;
+    top:87%;
+    font-size: 20px;
+    width: 100%;
+    position: fixed;
+    color:white;
+}
+#register_form{
+    width: 400px;
+    height: 380px;
+    border-style: solid;
+    position: fixed;
+    border-left-color: goldenrod;
+    border-bottom-color: goldenrod;
+    border-right-color:goldenrod;
+    border-top-color:goldenrod;
+    background-color: black;
+    border-width: 5px;
+    border-radius: 15px;
+    left: 62%;
+    top: 20%;
+    font-style: oblique;
+    font-size: 110%;
+}
+body{
+    width: 1000px;
+    background-color: black;
+}
+.text{
+    color:white;
+}
+#Name{
+    opacity: 90%;
+    margin-top: 100px;
+}
+#register_head{
+    font-size: 200%;
+    color: goldenrod;
+}
+#register_button{
+    top:20px;
+    font-size: 160%;
+    width: 75%;
+    background-color: goldenrod;
+    border-radius: 15px;
+    border-color: black;
+    font-style: oblique;
+    font-weight: bold;
+}
+#register_button:hover{
+    background-color: white;
+    border-color: goldenrod;
+}
+#register_title{
+    left:27%;
+    position: fixed;
+    font-size: 280%;
+    bottom:83%;
+    color: white;
+}
+#nor{
+    left:64%;
+    position: fixed;
+    font-size: 280%;
+    bottom:84.3%;
+    color: goldenrod;
+}

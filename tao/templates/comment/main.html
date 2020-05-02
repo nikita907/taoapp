@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>{% block title %}TAO{%endblock%}</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    {%load static%}
+</head>
+<body>
+{%block content%}
+<ul class="navbar">
+    <form id="navbarform" action="{%url 'main'%}">
+        <input id="search" type="search" placeholder="Поиск" name="search">
+        <input id="searchbutton" type="submit" value="Найти">
+    </form>
+    <div class="help">
+        <li class="navigation"><a href="{%url 'profile' spec.id %}">Моя страница</a></li>
+        <li class="navigation"><a href="{%url 'main'%}">На главную</a></li>
+        <li class="navigation"><a>О проекте</a></li>
+        <li class="navigation"><a href="{%url 'logout'%}">Выйти ({{username}})</a></li>
+    </div>
+</ul>
+<div id="back">
+<p>Hi {{username}}
+{%if SearchUser%}
+{%for c in SearchUser%}
+<a href="{%url 'prof' c.id%}">{{c.users_nick}}</a><br>
+{%endfor%}
+{%endif%}
+{%if not SearchUser%}
+{%if Users%}
+{%for u in Users%}
+    <div id="profile">
+<img id="prof_img" height="100" width="100" src="{{u.image_set.get.photo.url}}"/>
+    {%if u.userinfo_set.get.userAge%}
+<p class="information">Возраст:{{u.userinfo_set.get.userAge}}</p><br><br>
+    {%else%}
+    <p class="information">Возраст:Не указан</p><br><br>
+    {%endif%}
+    {%if u.userinfo_set.get.userSex%}
+<p class="information">Пол:{{u.userinfo_set.get.userSex}}</p><br><br>
+    {%else%}
+    <p class="information">Пол:Не указан</p><br><br>
+    {%endif%}
+    {%if u.userinfo_set.get.userCountry%}
+<p class="information">Страна:{{u.userinfo_set.get.userCountry}}</p><br><br>
+    {%else%}
+    <p class="information">Страна:Не указана</p><br><br>
+    {%endif%}
+    {%if u.userinfo_set.get.userTown%}
+<p class="information">Город:{{u.userinfo_set.get.userTown}}</p><br><br>
+    {%else%}
+    <p class="information">Город:Не указан</p><br><br>
+    {%endif%}
+<a  id="nickname" href="{%url 'prof' u.id%}">{{u.users_nick}}</a><br><br>
+    {%for c in u.comment_set.all%}
+    <p id="comment_author">{{c.comment_author}} написал :</p><br>
+    <p class="comment">{{c.comment_text}}</p><br><br>
+    {%endfor%}
+</div>
+<hr>
+<br><br>
+{%endfor%}
+{%endif%}
+{%endif%}
+<div>
+{%endblock%}
+</body>
+</html>

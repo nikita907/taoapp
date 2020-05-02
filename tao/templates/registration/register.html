@@ -1,0 +1,24 @@
+{% extends "comment/bases.html" %}
+
+{% block title %}Create an account{% endblock %}
+{% block content %}
+<p id="register_title">Напиши то,о чём думаешь </p>
+<p id="register2">Или <a href="{%url 'login'%}" >войдите,</a> если вы уже зарегестрированы<p>
+    <div id="register_form">
+<p id="register_head">Зарегистрироваться</p>
+<form  action="." method="post">
+    {% csrf_token %}
+    <p class="text">Придумайте себе никнейм:</p>{{user_form.username}}
+</br>
+    <p class="text">Введите свою электорнную почту:</p>{{user_form.email}}</br>
+<p class="text">Введите пароль:</p>{{user_form.password}}</br>
+    <p class="text">Повторите пароль:</p>{{user_form.password2}}</br><br><br><br>
+<input type="submit" value="Создать аккаунт" id="register_button">
+</form>
+</div>
+<div class="box">
+    <div class="top-text">
+        <h1>Напиши то,о чём думаешь<br><span id="typing"></span></h1>
+    </div>
+</div>
+{% endblock %}
