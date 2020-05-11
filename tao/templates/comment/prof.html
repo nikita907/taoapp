@@ -9,40 +9,127 @@
     <div class="help">
         <li class="navigation"><a href="{%url 'main'%}">На главную</a></li>
         <li class="navigation"><a>О проекте</a></li>
-        <li class="navigation"><a href="{%url 'logout'%}">Выйти</a></li>
+        <li class="navigation"><a href="{%url 'logout'%}">Выйти ({{spec.users_nick}})</a></li>
     </div>
 </ul>
+{%load humanize%}
 {%load static%}
-<h2>Hi there,my nickname is {{User.users_nick}}</h2>
-<h2 id="nick">{{User.users_nick}}</h2>
-<img id='image' src="{{ im.photo.url }}"/>
-<img id="imagebg" src="{%static 'images/1.png'%}">
-<img id="imagebg2" src="{%static 'images/pr.png'%}">
-<img id="imagebg3" src="{%static 'images/r5.png'%}">
+<div id="qw">
+    <br><br><br>
+    <img id='image' src="{{ im.photo.url }}"/>
+    <img id="imagebg2" src="{%static 'images/dym.png'%}">
+    <img id="imagebg4" src="{%static 'images/dym.png'%}">
+    <img id="imagebg3" src="{%static 'images/light.jpg'%}">
+</div>
+<img id='i' src="{%static 'images/birk.png'%}">
+<p class="profnick">Nickmame:{{User.users_nick}}</p>
+{%if User.admin%}
+<p id="rolea">(Aдминистатор)</p>
+{%else%}
+<p id="roleu">(Пользователь)</p>
+{%endif%}
+{%if infa%}
+<div id="infa">
+<p class="infa" id="Age">Возраст:{{infa.userAge}}</p><br><br><br>
+<p class="infa" id="Town">Город:{{infa.userTown}}</p><br><br><br><br><br>
+<p class="infa" id="Country">Страна:{{infa.userCountry}}</p><br><br><br><br>
+<p class="infa" id="Sex">Пол:{{infa.userSex}}</p><br><br>
+</div>
+{%else%}
+<p class="infa2" id="Age2">Возраст: не указан</p><br><br><br>
+<p class="infa2" id="Town2">Город: не указан</p><br><br><br>
+<p class="infa2" id="Country2">Страна: не указана</p><br><br><br>
+<p class="infa2" id="Sex2">Пол: не указан</p><br><br>
+{%endif%}
+<br>
+<div id="common">
+<div id="leave">
+<form action="{%url 'leave_opinion' User.id%}" method="post">
+    {% csrf_token %}
+    <input  type="checkbox" name="name"><b id="anon">Остаться анонимным</b><br>
+    <textarea id="textarea" name='text'placeholder="Оставьте своё мнение об этом человеке" cols="50" rows="10">
+</textarea><br><br>
+    <button id="button"type="submit">Оставить комментарий</button>
+</form>
+</div>
+    {%if admin%}
+    <form action="{%url 'delete' User.id%}">
+    <button id="remove">Удалить пользователя</button>
+    </form>
+    <form action="{%url 'adminka' User.id%}">
+    <button id="add">Наделить пользователя правами администрации</button>
+    </form>
+    {%endif%}
+<hr>
+</div>
+<br>
+<div id="co">
 {%if commen %}
-{%for c in commen%}
-<p>
-    <p id="comment">{{c.comment_author}}</p>
-    <p>{{c.comment_text}}</p>
-<p>likes:{{c.comment_likes}}</p>
-<form action="{%url 'like_change' User.id c.id %}" method="get">
-    <input id="test" type="submit" value="&#128077;{{c.comment_likes}}" name="likes"></input>
-</form>
-<form action="{%url 'dislike_change' User.id c.id %}" method="get">
- <input type="submit" value="&#128078 {{c.comment_dislikes}}" name="likes"></input>
-</form>
-<p>disikes:{{c.comment_dislikes}}</p>
+{%for c in commen.all|dictsortreversed:'pub_date'%}
+<div id="comme">
+    {%if admin%}
+    <form  action="{%url 'deletecom'  User.id c.id%}" method="post">
+        {%csrf_token%}
+    <button id="deletecom">Удалить комментарий</button>
+    </form>
+    {%endif%}
+    <p>
+        {%for us in Users%}
+        {%if c.comment_author == us.users_nick%}
+    {%if  c.comment_author != spec.users_nick%}
+    <p class="author">Автор : <a href="{%url 'prof' us.id%}">{{c.comment_author}}</a></p>
+    {%endif%}
+    {%endif%}
+    {%endfor%}
+    {%ifequal c.comment_author 'anonim'%}
+    <p class="author">Автор : {{c.comment_author}}</p>
+    {% endifequal %}
+    {%ifequal c.comment_author spec.users_nick%}
+    <p class="author">От вас:</p>
+    {% endifequal %}
+    <p id="text">Текст : {{c.comment_text}}</p>
+    <br>
+    {%with query=c.like_done.all%}
+    {%with query2=c.dislike_done.all%}
+    {%for q in query%}
+    {%if spec.id == q.id%}
+    <form  action="{% url 'like_change' User.id c.id%}" method="post">
+        {%csrf_token%}
+        <button id="likes2" class="like">&#128077;{{c.comment_likes}}</button>
+    </form>
+    {%endif%}
+    {%endfor%}
+    {%if spec not in query%}
+    <form  action="{% url 'like_change' User.id c.id%}" method="post">
+        {%csrf_token%}
+        <button id="likes3" class="like">&#128077;{{c.comment_likes}}</button>
+    </form>
+    {%endif%}
+    {%for q in query2%}
+    {%if spec.id == q.id%}
+    <form  action="{% url 'dislike_change' User.id c.id%}" method="post">
+        {%csrf_token%}
+        <button id="dislike2" class="like">&#128078;{{c.comment_dislikes}}</button>
+    </form>
+    {%endif%}
+    {%endfor%}
+    {%if spec not in query2%}
+    <form  action="{% url 'dislike_change' User.id c.id%}" method="post">
+        {%csrf_token%}
+        <button id="dislike3" class="like">&#128078;{{c.comment_dislikes}}</button>
+    </form>
+    {%endif%}
+    <br>
+    <p id="date">{{c.pub_date}}</p>
+    </p>
+    {%endwith%}
+    {%endwith%}
+</div>
+    <hr>
+</div>
 </p>
 {%endfor%}
 {%else%}
 Мнений пока нет!,стань первым
 {%endif%}
-<hr>
-<form action="{%url 'leave_opinion' User.id%}" method="post">
-    {% csrf_token %}
-<input type="checkbox" name="name">Анонимный вопрос<br>
-<textarea name='text'placeholder="Оставьте своё мнение об этом человеке" cols="50" rows="10">
-</textarea><br>
-    <button type="submit">Оставить комментарий</button>
-</form>
 {%endblock%}

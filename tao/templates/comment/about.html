@@ -1,0 +1,22 @@
+{% extends "comment/main.html" %}
+{%block content%}
+<ul class="navbar">
+    <form id="navbarform" action="{%url 'main'%}">
+        <input id="search" type="search" placeholder="Поиск" name="search">
+        <input id="searchbutton" type="submit" value="Найти">
+    </form>
+    <div class="help">
+        <li class="navigation"><a href="{%url 'profile' spec.id %}">Моя страница</a></li>
+        <li class="navigation"><a href="{%url 'main'%}">На главную</a></li>
+        <li class="navigation"><a href="{%url 'logout'%}">Выйти ({{spec.users_nick}})</a></li>
+    </div>
+</ul>
+<p class="texta">Этот проект был создан для того,чтобы вы могли спокойно и размеренно высказать своё мнение о человеке,не боясь за свою конфиденциальность</p>
+<p class="texta">C другой стороны,вы сможете получить о себе непредвзятое мнение,честно узнать о себе то,о чём вы могли даже не догадываться</p>
+<p class="texta"> Политика использования:</p>
+<ul class="texta">1.Запрещается распостранять личные данные/переписки/фотографии</ul>
+<ul class="texta">2.Запрещается оскоробление родсвенников</ul>
+<ul class="texta">3.Запрещается любые проявления расизма</ul>
+<ul class="texta">4.Запрещается беспричинное угнетение</ul>
+<!-- Template Main JS File -->
+{%endblock%}

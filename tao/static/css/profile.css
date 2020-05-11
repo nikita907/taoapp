@@ -49,6 +49,11 @@ li a{
 #username{
     color:goldenrod;
 }
+#mainprofile{
+    height: 345px;
+    overflow-y: hidden;
+    word-wrap: break-word;
+}
 body{
     margin: 0px;
     background-color: black;
@@ -101,12 +106,35 @@ body{
     border-right-color:#DDDDDC;
     position: absolute;
     z-index: 0;
-    margin-left: 260px;
-    margin-top: 150px;
+    margin-left: 290px;
+    margin-top: 100px;
     transform: rotate(-12deg);
-    color:purple;
-    font-size: 25px;
+    color:darkred;
+    font-size: 20px;
     font-style: italic;
+}
+#Country2{
+    margin-left: 250px;
+}
+#Sex2{
+    margin-left: 270px;
+}
+.infa2{
+    width: 200px;
+    border-top-color: #DDDDDC;
+    border-left-color:#DDDDDC;
+    border-right-color:#DDDDDC;
+    position: absolute;
+    z-index: 0;
+    margin-left: 240px;
+    margin-top: 100px;
+    transform: rotate(-12deg);
+    color:darkred;
+    font-size: 20px;
+    font-style: italic;
+}
+#testa{
+    word-wrap: break-word;
 }
 #i{
     width: 700px;
@@ -116,26 +144,42 @@ body{
     z-index: -1;
 }
 #Town{
-margin-left:239px;
+margin-left:249px;
+}
+#mainnick{
+    margin-top: -15px;
 }
 #Age{
     margin-left: 235px;
 }
+#Age2{
+    margin-left: 235px;
+}
 #Country{
-    margin-left: 249px;
+    margin-left: 259px;
 }
 #edit{
     color: white;
     position: absolute;
     margin-top: 195px;
-    margin-left: 310px;
-    transform: rotate(-12deg);
-    font-size: 30px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+#info2{
+    color: white;
+    margin-top: 420px;
+    position: absolute;
+    width: 240px;
+    height: 120px;
+    border-style: solid;
+    border-color: red;
 }
 .information{
+    width: 180px;
+    word-wrap: break-word;
     position: absolute;
     color:white;
-    margin-top: 60px;
+    margin-top: 100px;
     margin-left: 220px;
 }
 #prof_img{
@@ -146,7 +190,70 @@ margin-left:239px;
     margin-left: 50px;
     margin-top: 100px;
 }
+#login{
+    border-style: solid;
+    border-color: white;
+    margin-left: 550px;
+    width: 400px;
+    background-color: black;
+    margin-top: 150px;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+#photos{
+    color: white;
+    margin-top: 550px;
+    position: absolute;
+    width: 240px;
+    height: 120px;
+    border-style: solid;
+    border-color: red;
+}
+#login2{
+    border-top-color: red;
+    border-width: 1px;
+    border-top-style: solid;
+}
+.error{
+    color:red;
+}
+#loginbutton{
+    margin-left: 150px;
+    background-color: red;
+    border-radius: 12px;
+    border-color: black;
+    width: 80px;
+    height: 30px;
+    color: white;
+    margin-top: 20px;
+}
+#prof_img2{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+    margin-left: 50px;
+    margin-top: 100px;
+}
+#mainnick2{
+    position: absolute;
+    color: goldenrod;
+    font-size: 40px;
+    margin-top: 45px;
+    margin-left: 70px;
+}
+#seach{
+    border-style: solid;
+    border-color: goldenrod;
+    margin-left: 550px;
+    width: 400px;
+    border-radius: 50px;
+    height: 300px;
+    margin-top: 20px;
+}
 #profile{
+    word-wrap: break-word;
     height: 300px;
     margin-left: 500px;
     width: 400px;
@@ -167,21 +274,356 @@ margin-left:239px;
 #profile:hover{
     border-color: white;
 }
-.comment{
-    z-index: -1;
-    position: absolute;
-    color: white;
-    margin-left: -500px;
-    margin-top: -150px;
+#group{
+    margin-top: -200px;
 }
-#comment_author{
-    margin-top: -150px;
-    z-index: -1;
+#ingroup{
+    width: 300px;
+    height: fit-content;
+    z-index: -2;
+    border-style: solid;
+    border-color: darkred;
+    margin-left: -400px;
+    border-radius: 20px;
+    background-color: grey;
+    margin-top: 20px;
+    overflow-y: hidden;
+}
+.comment{
+    width: 270px;
+    height: 100px;
+    border-style: solid;
+    border-color: darkred;
+    color: darkred;
+    background-color: white;
+    overflow-x: paged-x;
+    overflow-y: hidden;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.head{
+    display: inline;
+}
+#stat{
+    margin-left: 600px;
+    color: goldenrod;
+    font-size: 40px;
+}
+#counter{
     position: absolute;
-    color: white;
-    margin-left: -500px;
+    color: goldenrod;
+    margin-left: 500px;
+    font-size: 20px;
+}
+#last{
+    color: goldenrod;
+    margin-left: 90px;
+    font-size: 30px;
+}
+#ca{
+    color: purple;
+}
+.comment_author{
+    margin-left: 30px;
+    width: fit-content;
+    border-style: solid;
+    border-color: grey;
+    border-bottom-color: darkred;
+    color: darkred;
     font-size: 20px;
 }
 #comment{
     color: white;
+}
+#commetari{
+    position: absolute;
+    margin-left: 200px;
+    border-style: solid;
+    border-color: white;
+}
+#text{
+    overflow-x:hidden;
+    border-style: solid;
+    border-color:darkred;
+    border-radius: 10px;
+    background-color:black;
+    font-size: 20px;
+    color: white;
+    box-shadow: 3px 3px 5px 3px white;
+}
+#date{
+    color: whitesmoke;
+    margin-top: 25px;
+    margin-left: 320px;
+    border-color: darkred;
+    border-style: solid;
+    border-radius: 10px;
+    box-shadow: 0px 3px 5px 3px white;
+    background-color: black;
+    padding: 5px;
+}
+.author{
+    width: 480px;
+    color:white;
+    font-size: 30px;
+    border-style: solid;
+    border-color: darkred;
+    border-radius: 10px;
+    background-color:black;
+    box-shadow: 0px 3px 5px 3px white;
+}
+#com{
+    border-radius: 20px;
+    background-color:grey;
+    overflow-x:hidden;
+    border-style: solid;
+    width: 500px;
+    margin-left: 500px;
+    border-color: white;
+}
+#likes{
+    color: white;
+    background-color: black;
+    width: 70px;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 0px 3px 5px 3px white;
+    margin-left: 30px;
+    padding-bottom: 5px;
+}
+#likes3{
+    color: white;
+    background-color: black;
+    width: 70px;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 0px 3px 5px 3px white;
+    margin-left: 30px;
+    padding-bottom: 5px;
+}
+#dislike3{
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    width: 70px;
+    font-size: 20px;
+    margin-left: 345px;
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 0px 3px 5px 3px white;
+    padding-bottom: 5px;
+    position: absolute;
+    margin-top: -34px;
+}
+.texta{
+    color: goldenrod;
+    margin-top: 100px;
+    font-size: 20px;
+    margin-left: 100px;
+}
+#deletecom{
+    position: absolute;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    margin-top: 225px;
+}
+#likes2{
+    color: white;
+    background-color: red;
+    width: 70px;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 0px 3px 5px 3px white;
+    margin-left: 30px;
+    padding-bottom: 5px;
+}
+#mcomments{
+    background-color: white;
+}
+#infa2{
+    width: 500px;
+    position: absolute;
+    word-wrap: break-word;
+}
+#infa{
+    width: 500px;
+    position: absolute;
+    word-wrap: break-word;
+}
+#remove{
+    position: absolute;
+    margin-top: -150px;
+    background-color: red;
+    color:white;
+    margin-left: 60px;
+    border-radius: 5px;
+}
+#add{
+    border-radius: 5px;
+    position: absolute;
+    margin-top: -100px;
+    background-color: red;
+    color:white;
+    margin-left: 60px;
+}
+#forma{
+    height: 300px;
+    margin-left: 150px;
+    background-color: black;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: darkred;
+    width: fit-content;
+   padding: 20px;
+    margin-top: 50px;
+}
+#confirm{
+    border-radius: 10px;
+    background-color: white;
+    border-color: red;
+    color:black;
+    margin-left: 120px;
+}
+#id_userTown{
+    height: 30px;
+    border-radius: 15px;
+    color: darkred;
+    width: 300px;
+    border-color: red;
+}
+#id_userCountry{
+    height: 30px;
+    border-radius: 15px;
+    color: darkred;
+    width: 290px;
+    border-color: red;
+}
+#id_userSex_1{
+    background-color: darkred;
+}
+#id_userAge{
+    height: 30px;
+    border-radius: 15px;
+    color: darkred;
+    width: 100px;
+    border-color: red;
+}
+.profnick{
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    margin-left: 28px;
+    margin-top: 580px;
+}
+#ageform{
+    color: darkred;
+}
+.form{
+    color: darkred;
+}
+#roleamain{
+    position: absolute;
+    color: RED;
+    font-size: 35px;
+    margin-left: 528px;
+    margin-top: -100px;
+}
+#rolea{
+    position: absolute;
+    color: RED;
+    font-size: 35px;
+    margin-left: 28px;
+    margin-top: 620px;
+}
+#roleu{
+    position: absolute;
+    color: white;
+    font-size: 35px;
+    margin-left: 28px;
+    margin-top: 620px;
+}
+#dislike{
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    width: 45px;
+    font-size: 20px;
+    margin-left: 300px;
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 0px 3px 5px 3px white;
+    padding-bottom: 5px;
+    position: absolute;
+    margin-top: 0px;
+}
+#dislike2{
+    border-radius: 10px;
+    color: white;
+    background-color: red;
+    width: 70px;
+    font-size: 20px;
+    margin-left: 370px;
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 0px 3px 5px 3px white;
+    padding-bottom: 5px;
+    position: absolute;
+    margin-top: -34px;
+}
+.like{
+    display: inline;
+}
+#comme{
+    border-radius: 20px;
+    background-color:grey;
+    overflow-x:hidden;
+    border-style: solid;
+    width: 510px;
+    margin-left: 500px;
+    border-color: darkred;
+    margin-top: 40px;
+    box-shadow: 0px 3px 5px 3px whitesmoke;
+    padding: 10px;
+}
+#anon{
+    color: white;
+    margin-top: -10px;
+}
+#common{
+}
+#button{
+    margin-left: 100px;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    border-color: darkred;
+    border-style: solid;
+    box-shadow: 0px 3px 5px 3px whitesmoke;
+}
+#leave{
+    margin-top: 500px;
+    margin-left: 540px;
+    background-color: black;
+    width: 410px;
+    border-color: darkred;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0px 3px 5px 3px whitesmoke;
+}
+#textarea{
+    border-width: 3px;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    color:black;
+    border-color: darkred;
+    box-shadow: 0px 3px 5px 3px whitesmoke;
+}
+#co{
 }

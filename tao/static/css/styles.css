@@ -40,6 +40,9 @@
 .navbar-collapse{
     justify-content: flex-end;
 }
+#texta{
+    width: 1000px;
+}
 #register2{
     left:25%;
     top:87%;

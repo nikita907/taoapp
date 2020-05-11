@@ -4,6 +4,7 @@ class Users(models.Model):
     users_nick=models.CharField('NickName',max_length=20)
     users_email=models.EmailField('email',unique=True)
     userOnRedaction = models.BooleanField('On redaction', default=False)
+    admin = models.BooleanField(default=False)
     #user_age=models.IntegerField('Возраст')
    # user_information=models.TextField('о себе',max_length=400)
     #user_town=models.CharField('город',max_length=25)
@@ -28,12 +29,16 @@ class Image(models.Model):
     photo = models.ImageField(upload_to='avatar/%Y/%M/%D', blank=True,default='test.jpg')
     user_has_photo=models.BooleanField(default=False)
 class Comment(models.Model):
-    comment_id = models.ForeignKey(Users,on_delete=models.CASCADE,default='1')
+    comment_id = models.ForeignKey(Users,on_delete=models.CASCADE)
     comment_author = models.CharField('автор коммента',max_length=20)
     comment_text=models.TextField('текст коммента',max_length=400)
     comment_likes=models.IntegerField("лайки")
     comment_dislikes=models.IntegerField("дизлайки")
     pub_date=models.DateTimeField('дата публикации')
+    like_done = models.ManyToManyField(Users, related_name='userscom')
+    dislike_done=models.ManyToManyField(Users,related_name='userscom2')
+    onlike=models.BooleanField(default=False)
+    ondislike=models.BooleanField(default=False)
 
     class Meta:
         verbose_name='Мнение'

@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .myclass{
+            border-radius: 12px;
+            height: 158px;
+            width: 200px;
+            color:white;
+        }
+    </style>
     {% load static %}
     <title>{% block title %}TAO{%endblock%}</title>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     {%load static%}
 </head>
-<body>
+<div>
 {%block content%}
 <ul class="navbar">
     <form id="navbarform" action="{%url 'main'%}">
@@ -16,22 +24,54 @@
     <div class="help">
         <li class="navigation"><a href="{%url 'profile' spec.id %}">Моя страница</a></li>
         <li class="navigation"><a href="{%url 'main'%}">На главную</a></li>
-        <li class="navigation"><a>О проекте</a></li>
         <li class="navigation"><a href="{%url 'logout'%}">Выйти ({{username}})</a></li>
+        <li class="navigation"><a href="{%url 'about'%}">О проекте</a></li>
     </div>
 </ul>
 <div id="back">
+    <div id="head">
+    <p class='head'id="last">Последние комментарии:</p>
+    <p class='head'id="stat">Информация:</p>
+    </div>
 <p>Hi {{username}}
 {%if SearchUser%}
 {%for c in SearchUser%}
-<a href="{%url 'prof' c.id%}">{{c.users_nick}}</a><br>
+    <div id="seach">
+    <a id='mainnick2'href="{%url 'prof' c.id%}">{{c.users_nick}}</a><br>
+    <img id="prof_img2" height="100" width="100" src="{{c.image_set.get.photo.url}}"/>
+        {%if u.userinfo_set.get.userAge%}
+    <p class="information">Возраст:{{u.userinfo_set.get.userAge}}</p><br><br>
+    {%else%}
+    <p class="information">Возраст:Не указан</p><br><br>
+    {%endif%}
+    {%if u.userinfo_set.get.userSex%}
+    <p class="information">Пол:{{u.userinfo_set.get.userSex}}</p><br><br>
+    {%else%}
+    <p class="information">Пол:Не указан</p><br><br>
+    {%endif%}
+    {%if u.userinfo_set.get.userCountry%}
+    <p class="information">Страна:{{u.userinfo_set.get.userCountry}}</p><br><br><br>
+    {%else%}
+    <p class="information">Страна:Не указана</p><br><br>
+    {%endif%}
+    {%if u.userinfo_set.get.userTown%}
+    <p class="information">Город:{{u.userinfo_set.get.userTown}}</p><br><br>
+    {%else%}
+    <p class="information">Город:Не указан</p><br><br>
+    {%endif%}
+</div>
+    <br>
+    <hr>
+    <br><br>
 {%endfor%}
 {%endif%}
 {%if not SearchUser%}
 {%if Users%}
 {%for u in Users%}
+    <div id="mainprofile">
     <div id="profile">
 <img id="prof_img" height="100" width="100" src="{{u.image_set.get.photo.url}}"/>
+        <div id="testa">
     {%if u.userinfo_set.get.userAge%}
 <p class="information">Возраст:{{u.userinfo_set.get.userAge}}</p><br><br>
     {%else%}
@@ -43,7 +83,7 @@
     <p class="information">Пол:Не указан</p><br><br>
     {%endif%}
     {%if u.userinfo_set.get.userCountry%}
-<p class="information">Страна:{{u.userinfo_set.get.userCountry}}</p><br><br>
+<p class="information">Страна:{{u.userinfo_set.get.userCountry}}</p><br><br><br>
     {%else%}
     <p class="information">Страна:Не указана</p><br><br>
     {%endif%}
@@ -52,18 +92,41 @@
     {%else%}
     <p class="information">Город:Не указан</p><br><br>
     {%endif%}
-<a  id="nickname" href="{%url 'prof' u.id%}">{{u.users_nick}}</a><br><br>
-    {%for c in u.comment_set.all%}
-    <p id="comment_author">{{c.comment_author}} написал :</p><br>
-    <p class="comment">{{c.comment_text}}</p><br><br>
-    {%endfor%}
 </div>
+<a  id="nickname" href="{%url 'prof' u.id%}">{{u.users_nick}}</a><br><br>
+    {%if u.admin%}
+    <p id="roleamain">(Aдминистатор)</p>
+    {%endif%}
+    <div id="group">
+        {% with total=u.comment_set.all.count%}
+        <p id="counter">Комментариев о пользователе:{{total}}</p>
+        {%endwith%}
+    {%for c in u.comment_set.all|dictsortreversed:'pub_date'%}
+        <div id="ingroup">
+            {%for us in Users%}
+            {%if c.comment_author == us.users_nick%}
+            <p class="comment_author"> <a id="ca" href="{%url 'prof' us.id%}">{{c.comment_author}}</a> написал(а):</p>
+            {%endif%}
+            {%endfor%}
+            {%ifequal c.comment_author 'anonim'%}
+            <p class="comment_author">{{c.comment_author}} написал(а): </p>
+            {% endifequal %}
+            {%ifequal c.comment_author username%}
+            <p class="comment_author">От вас:</p>
+            {% endifequal %}
+    <p class="comment">{{c.comment_text}}</p>
+        </div>
+    {%endfor%}
+    </div>
+</div>
+</div>
+    <br>
 <hr>
 <br><br>
 {%endfor%}
 {%endif%}
 {%endif%}
-<div>
+</div>
 {%endblock%}
 </body>
 </html>

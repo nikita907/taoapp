@@ -22,3 +22,8 @@
     </div>
 </div>
 {% endblock %}
+Select  U.*,max(counter),tbl.idApp FROM (select count(*) as counter,idApp from Application_has_mobilePhone1 GROUP BY idmobilephone) as tbl,Application_has_mobilePhone1 A,User u,mobilephone
+where u.iduser in (select mo.iduser from mobilephone mo where mo.idMobilePhone in (select AM.idMobilePhone from Application_has_mobilePhone1 AM WHERE AM.idApp=tbl.idApp));
+SELECT DISTINCT M.*, MO.memoryStart - (SELECT SUM(A.MemoryQuantity) From application a WHERE A.idApp IN (SELECT AM.idApp From Application_has_mobilePhone1 AM))freememory FROM Model Mo,Application A,mobilephone M
+WHERE M.number_model AND Mo.NumberModel IN
+(SELECT M.number_model From MobilePhone M WHERE M.idMobilePhone IN (SELECT AM.idmobilePhone From Application_has_mobilePhone1 AM ));

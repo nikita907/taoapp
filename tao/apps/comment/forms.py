@@ -21,12 +21,11 @@ class ImageForm(forms.ModelForm):
         model=Image
         fields=('photo',)
 class UserInfoForm(forms.ModelForm):
-    userAge=forms.IntegerField(widget=forms.NumberInput())
-    userTown = forms.CharField(widget=forms.Textarea())
-    userCountry = forms.CharField(widget=forms.Textarea())
+    userAge=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"myclass"}))
+    userTown = forms.CharField(widget=forms.Textarea(attrs={"class":"myclass"}))
+    userCountry = forms.CharField(widget=forms.Textarea(attrs={"class":"myclass"}))
     CHOICES = [('Мужской','Мужской'), ('Женский','Женский')]
     userSex = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
-    userAbout = forms.CharField(widget=forms.Textarea())
     class Meta:
         model=UserInfo
-        fields=('userAge','userTown','userCountry','userSex','userAbout')
+        fields=('userAge','userTown','userCountry','userSex')

@@ -1,0 +1,187 @@
+#image{
+    width: 370px;
+    height: 370px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 80px;
+    z-index: -1;
+    position: absolute;
+    margin-left: 829px;
+    margin-bottom: 12px;
+    box-shadow: 0px 4px 15px 10px white;
+    margin-top: 30px;
+}
+.navigation{
+    font-size: 15px;
+    color:goldenrod;
+    display: inline;
+    margin-left:80px;
+}
+li a{
+    color:goldenrod;
+    padding: 10px 16px;
+    border-bottom:4px solid goldenrod;
+    margin-top: 10px;
+}
+.navbar{
+    margin-top: 0px;
+    background-color: black;
+    height: 50px;
+}
+.help{
+    margin-left: 600px;
+}
+#navbarform{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#search{
+    border-style: solid;
+    border-color: goldenrod;
+    border-radius: 12px;
+}
+#searchbutton{
+    background-color: gold;
+    border-style: solid;
+    border-color: black;
+}
+#username{
+    color:goldenrod;
+}
+body{
+    margin: 0px;
+    background-color: black;
+}
+#imagebg{
+    z-index: -3;
+    position: absolute;
+    height: 400px;
+    width: 550px;
+    margin-top: -200px;
+    margin-left: 720px;
+}
+#imagebg3{
+    z-index: -3;
+    position: absolute;
+    height: 650px;
+    width: 799px;
+    margin-top: -110px;
+    margin-left: 617px;
+    transform: rotate(5deg);
+}
+#imagebg4{
+    z-index: -2;
+    position: absolute;
+    height: 170px;
+    width: 399px;
+    margin-top: 350px;
+    margin-left: 637px;
+    transform: rotate(13deg);
+}
+#imagebg2 {
+    height: 170px;
+    width: 400px;
+    position: absolute;
+    margin-left:930px;
+    z-index: -2;
+    margin-top: 350px;
+    transform: rotate(170deg);
+}
+#nick{
+    position: absolute;
+    margin-top: 400px;
+    margin-left: 950px;
+    transform: rotate(5deg);
+}
+.infa{
+    width: 200px;
+    border-top-color: #DDDDDC;
+    border-left-color:#DDDDDC;
+    border-right-color:#DDDDDC;
+    position: absolute;
+    z-index: 0;
+    margin-left: 260px;
+    margin-top: 150px;
+    transform: rotate(-12deg);
+    color:purple;
+    font-size: 25px;
+    font-style: italic;
+}
+#i{
+    width: 700px;
+    height: 600px;
+    position: absolute;
+    margin-top: -100px;
+    z-index: -1;
+}
+#Town{
+margin-left:239px;
+}
+#Age{
+    margin-left: 235px;
+}
+#Country{
+    margin-left: 249px;
+}
+#edit{
+    color: white;
+    position: absolute;
+    margin-top: 195px;
+    margin-left: 310px;
+    transform: rotate(-12deg);
+    font-size: 30px;
+}
+.information{
+    position: absolute;
+    color:white;
+    margin-top: 60px;
+    margin-left: 220px;
+}
+#prof_img{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+    margin-left: 50px;
+    margin-top: 100px;
+}
+#profile{
+    height: 300px;
+    margin-left: 500px;
+    width: 400px;
+    border-style: solid;
+    border-radius: 50px;
+    border-color: goldenrod;
+}
+#back{
+    background-image:url("../../static/images/.png");
+}
+#nickname{
+    position: absolute;
+    color: goldenrod;
+    font-size: 40px;
+    margin-top: -115px;
+    margin-left: 70px;
+}
+#profile:hover{
+    border-color: white;
+}
+.comment{
+    z-index: -1;
+    position: absolute;
+    color: white;
+    margin-left: -500px;
+    margin-top: -150px;
+}
+#comment_author{
+    margin-top: -150px;
+    z-index: -1;
+    position: absolute;
+    color: white;
+    margin-left: -500px;
+    font-size: 20px;
+}
+#comment{
+    color: white;
+}
