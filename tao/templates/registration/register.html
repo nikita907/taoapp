@@ -7,6 +7,9 @@
     <div id="register_form">
 <p id="register_head">Зарегистрироваться</p>
 <form  action="." method="post">
+    {%if user_form.errors%}
+    <div id="errors">{{user_form.errors}}</div>
+    {%endif%}
     {% csrf_token %}
     <p class="text">Придумайте себе никнейм:</p>{{user_form.username}}
 </br>

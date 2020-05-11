@@ -43,6 +43,11 @@
 #texta{
     width: 1000px;
 }
+#errors{
+    margin-top: 225px;
+    position: absolute;
+    color: red;
+}
 #register2{
     left:25%;
     top:87%;
