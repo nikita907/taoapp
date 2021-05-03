@@ -6,7 +6,7 @@
 {% if form.errors %}
 <p class="error">Неверные логин или пароль.Попытайтесь ещё раз</p>
 {% endif %}
-
+    <a href="{%url 'register' %}">На страницу регистрации</a>
 {% if next %}
 {% if user.is_authenticated %}
 <p>Your account doesn't have access to this page. To proceed,

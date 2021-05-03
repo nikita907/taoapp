@@ -14,32 +14,32 @@
 </ul>
 {%load humanize%}
 {%load static%}
-<div id="qw">
-    <br><br><br>
-    <img id='image' src="{{ im.photo.url }}"/>
-    <img id="imagebg2" src="{%static 'images/dym.png'%}">
-    <img id="imagebg4" src="{%static 'images/dym.png'%}">
-    <img id="imagebg3" src="{%static 'images/light.jpg'%}">
-</div>
-<img id='i' src="{%static 'images/birk.png'%}">
-<p class="profnick">Nickmame:{{User.users_nick}}</p>
+    <div id="qw">
+        <br><br><br>
+        <img id='image' src="{{ im.photo.url }}"/>
+        <img id="imagebg2" src="{%static 'images/dym.png'%}">
+        <img id="imagebg4" src="{%static 'images/dym.png'%}">
+        <img id="imagebg3" src="{%static 'images/light.jpg'%}">
+    </div>
+    <img id='i' src="{%static 'images/birk.png'%}">
+    <p class="profnick">Nickmame:{{User.users_nick}}</p>
 {%if User.admin%}
-<p id="rolea">(Aдминистатор)</p>
+    <p id="rolea">(Aдминистатор)</p>
 {%else%}
-<p id="roleu">(Пользователь)</p>
+    <p id="roleu">(Пользователь)</p>
 {%endif%}
 {%if infa%}
-<div id="infa">
-<p class="infa" id="Age">Возраст:{{infa.userAge}}</p><br><br><br>
-<p class="infa" id="Town">Город:{{infa.userTown}}</p><br><br><br><br><br>
-<p class="infa" id="Country">Страна:{{infa.userCountry}}</p><br><br><br><br>
-<p class="infa" id="Sex">Пол:{{infa.userSex}}</p><br><br>
-</div>
+    <div id="infa">
+    <p class="infa" id="Age">Возраст:{{infa.userAge}}</p><br><br><br>
+    <p class="infa" id="Town">Город:{{infa.userTown}}</p><br><br><br><br><br>
+    <p class="infa" id="Country">Страна:{{infa.userCountry}}</p><br><br><br><br>
+    <p class="infa" id="Sex">Пол:{{infa.userSex}}</p><br><br>
+    </div>
 {%else%}
-<p class="infa2" id="Age2">Возраст: не указан</p><br><br><br>
-<p class="infa2" id="Town2">Город: не указан</p><br><br><br>
-<p class="infa2" id="Country2">Страна: не указана</p><br><br><br>
-<p class="infa2" id="Sex2">Пол: не указан</p><br><br>
+    <p class="infa2" id="Age2">Возраст: не указан</p><br><br><br>
+    <p class="infa2" id="Town2">Город: не указан</p><br><br><br>
+    <p class="infa2" id="Country2">Страна: не указана</p><br><br><br>
+    <p class="infa2" id="Sex2">Пол: не указан</p><br><br>
 {%endif%}
 <br>
 <div id="common">
@@ -51,18 +51,28 @@
 </textarea><br><br>
     <button id="button"type="submit">Оставить комментарий</button>
 </form>
+    <div id="Statka" style="color:white ; margin-top:-150px; margin-left:500px; position:absolute; font-size:20px">
+    {%for stat in Statistics.all%}
+    <div>Всего комментариев : {{stat.wholeComments}}</div>
+    <div>Всего лайков : {{stat.wholeLikes}}</div>
+    <div>Всего дизлайков : {{stat.wholeDislikes}}</div>
+    {%endfor%}
+</div>
 </div>
     {%if admin%}
-    <form action="{%url 'delete' User.id%}">
-    <button id="remove">Удалить пользователя</button>
-    </form>
-    <form action="{%url 'adminka' User.id%}">
-    <button id="add">Наделить пользователя правами администрации</button>
-    </form>
+    {%if not User.admin%}
+        <form action="{%url 'delete' User.id%}">
+            <button id="remove">Удалить пользователя</button>
+        </form>
+        <form action="{%url 'adminka' User.id%}">
+            <button id="add">Наделить пользователя правами администрации</button>
+        </form>
+    {%endif%}
     {%endif%}
 <hr>
 </div>
 <br>
+
 <div id="co">
 {%if commen %}
 {%for c in commen.all|dictsortreversed:'pub_date'%}
@@ -130,6 +140,6 @@
 </p>
 {%endfor%}
 {%else%}
-Мнений пока нет!,стань первым
+<div style="color:white; margin-left:600px">Мнений пока нет!,стань первым</div>
 {%endif%}
 {%endblock%}

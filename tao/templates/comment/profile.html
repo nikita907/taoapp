@@ -27,7 +27,7 @@
     <img id="imagebg2" src="{%static 'images/dym.png'%}">
     <img id="imagebg4" src="{%static 'images/dym.png'%}">
     <img id="imagebg3" src="{%static 'images/light.jpg'%}">
-   
+
     <div id="info2">
         <p>Редактирование информации</p>
     </div>
@@ -90,12 +90,12 @@
 <div id="com">
 <p>
     {%for us in Users%}
-    {%if c.comment_author == us.users_nick%}
-    <p class="author">Автор : <a href="{%url 'prof' us.id%}">{{c.comment_author}}</a></p>
-    {%endif%}
+        {%if c.comment_author == us.users_nick%}
+            <p class="author">Автор : <a href="{%url 'prof' us.id%}">{{c.comment_author}}</a></p>
+        {%endif%}
     {%endfor%}
     {%ifequal c.comment_author 'anonim'%}
-    <p class="author">Автор : {{c.comment_author}}</p>
+        <p class="author">Автор : {{c.comment_author}}</p>
     {% endifequal %}
 <p id="text">Текст : {{c.comment_text}}</p>
     <br>
